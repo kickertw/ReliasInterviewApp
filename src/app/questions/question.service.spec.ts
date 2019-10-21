@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 
-import { QuestionService } from './question-service.service';
+import { QuestionService } from './question.service';
 
-describe('QuestionServiceService', () => {
+describe('QuestionService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
