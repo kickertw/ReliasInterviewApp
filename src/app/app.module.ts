@@ -19,8 +19,9 @@ import { HomeModule } from './home/home.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatTableModule, MatSortModule } from '@angular/material';
+import { MatTableModule, MatSortModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import { QuestionListComponent } from './questions/list/question-list.component';
+import { QuestionDetailComponent } from './questions/detail/question-detail.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -28,7 +29,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [AppComponent, QuestionListComponent],
+  declarations: [AppComponent, QuestionListComponent, QuestionDetailComponent],
   imports: [
     BrowserModule,
     FormsModule,
@@ -46,7 +47,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
     BrowserAnimationsModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

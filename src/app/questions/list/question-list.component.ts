@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Question } from '../shared/models/question.model';
 import { QuestionService } from '../question.service';
+import { MatSort, MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-question-list',
@@ -8,8 +9,10 @@ import { QuestionService } from '../question.service';
   styleUrls: ['./question-list.component.scss']
 })
 export class QuestionListComponent implements OnInit {
-  dataSource: Question[];
-  displayedColumns: string[] = ['Id', 'Question', 'Type', 'Level', 'Actions'];
+  displayedColumns: string[] = ['Id', 'Question', 'Type', 'Level'];
+  dataSource: MatTableDataSource<Question>;
+
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   constructor(private questionService: QuestionService) { }
 
@@ -18,6 +21,7 @@ export class QuestionListComponent implements OnInit {
   }
 
   getQuestions(): void {
-    this.dataSource = this.questionService.getQuestions();
+    this.dataSource = new MatTableDataSource(this.questionService.getQuestions());
+    this.dataSource.sort = this.sort;
   }
 }

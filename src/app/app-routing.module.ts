@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './shared/components';
 import { QuestionListComponent } from './questions/list/question-list.component';
+import { QuestionDetailComponent } from './questions/detail/question-detail.component';
 
 const routes: Routes = [
   {
@@ -18,7 +19,7 @@ const routes: Routes = [
       },
       {
         path: 'detail/:id',
-        component: PageNotFoundComponent
+        component: QuestionDetailComponent
       }
     ]
   },
