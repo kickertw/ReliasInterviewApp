@@ -1,27 +1,27 @@
-<p>Question detail for id = {{id}}</p>
+<h2>Question Detail</h2>
 
 <form class="example-form">
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="ID" [value]="id" />
+    <input matInput placeholder="ID" [value]="question.questionId" />
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Question" />
+    <input matInput placeholder="Question" [value]="question.text" />
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <textarea matInput placeholder="Description"></textarea>
+    <textarea matInput placeholder="Description" [value]="question.description"></textarea>
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Type" />
+    <input matInput placeholder="Type" [value]="question.type" />
   </mat-form-field>
   
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Level" />
+    <input matInput placeholder="Level" [value]="question.level" />
   </mat-form-field>
   
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Answer" />
+    <input matInput placeholder="Answer"  [value]="question.answer" />
   </mat-form-field>
 </form>

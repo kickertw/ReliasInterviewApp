@@ -1,9 +1,9 @@
 import { Question } from './question.model';
 
 export const MockQuestions: Question[] = [
-  { id: 1, text: 'Mock Question 1', type: 'Behavioral', level: 'Junior', isActive: true },
-  { id: 2, text: 'Mock Question 2', type: 'Behavioral', level: 'Mid', isActive: true },
-  { id: 3, text: 'Mock Question 3', type: 'Technical', level: 'Sr', isActive: true }
+  { questionId: 1, text: 'Mock Question 1', type: 'Behavioral', level: 'Junior', isActive: true },
+  { questionId: 2, text: 'Mock Question 2', type: 'Behavioral', level: 'Mid', isActive: true },
+  { questionId: 3, text: 'Mock Question 3', type: 'Technical', level: 'Sr', isActive: true }
 ];
 
 // const types = ['Behavioral', 'Technical'];

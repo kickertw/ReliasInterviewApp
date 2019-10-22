@@ -21,7 +21,9 @@ export class QuestionListComponent implements OnInit {
   }
 
   getQuestions(): void {
-    this.dataSource = new MatTableDataSource(this.questionService.getQuestions());
-    this.dataSource.sort = this.sort;
+    this.questionService.getQuestions().subscribe(response => {
+      this.dataSource = new MatTableDataSource(response);
+      this.dataSource.sort = this.sort;
+    });
   }
 }
