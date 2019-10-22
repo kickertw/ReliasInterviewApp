@@ -19,7 +19,7 @@ import { HomeModule } from './home/home.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatTableModule, MatSortModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatTableModule, MatSortModule, MatFormFieldModule, MatInputModule, MatIconModule } from '@angular/material';
 import { QuestionListComponent } from './questions/list/question-list.component';
 import { QuestionDetailComponent } from './questions/detail/question-detail.component';
 
@@ -49,7 +49,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatTableModule,
     MatSortModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
