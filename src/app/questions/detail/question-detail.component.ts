@@ -18,12 +18,40 @@ export class QuestionDetailComponent implements OnInit {
     private questionService: QuestionService) { }
 
   ngOnInit() {
-    this.getQuestion(+this.route.snapshot.paramMap.get('id'));
+    const questionId = +this.route.snapshot.paramMap.get('id');
+
+    if (questionId === 0) {
+      this.question = <Question> {
+        questionId: 0,
+        text: '',
+        type: 0,
+        level: 0,
+        description: null,
+        answer: null,
+        isActive: true
+      };
+    } else {
+      this.getQuestion(questionId);
+    }
   }
 
   getQuestion(id: number): void {
     this.questionService.getQuestions().subscribe(response => {
       this.question = response.filter(obj => obj.questionId === id)[0];
     });
+  }
+
+  saveQuestion() {
+    if (this.question.questionId === 0){
+      this.questionService.createQuestion(this.question).subscribe(
+        response => console.log(response),
+        error => console.log(error)
+      );
+    } else {
+      this.questionService.updateQuestion(this.question).subscribe(
+        response => console.log(response),
+        error => console.log(error)
+      );
+    }
   }
 }
