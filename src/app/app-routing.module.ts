@@ -4,11 +4,12 @@ import { PageNotFoundComponent } from './shared/components';
 import { LoginComponent } from './login/login.component';
 import { QuestionListComponent } from './questions/list/question-list.component';
 import { QuestionDetailComponent } from './questions/detail/question-detail.component';
+import { CandidatesListComponent } from './candidates/list/candidates-list.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent,
+    component: CandidatesListComponent,
     pathMatch: 'full'
   },
   {
@@ -24,6 +25,8 @@ const routes: Routes = [
       }
     ]
   },
+  {path: 'candidatelist',
+  component: CandidatesListComponent},
   {
     path: '**',
     component: PageNotFoundComponent
