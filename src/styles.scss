@@ -17,10 +17,16 @@ body {
 }
 .menu-bar {
   -webkit-app-region: drag;
-  height: 30px;
-  max-height: 30px;
+  height: 36px;
+  max-height: 36px;
   button {
     -webkit-app-region: no-drag;
+    min-width: auto;
+    border-radius: 0;
+    &.mat-button:hover {
+      color: #3f51b5;
+      background: white;
+    }
   }
 }
 
