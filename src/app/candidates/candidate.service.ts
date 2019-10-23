@@ -25,7 +25,7 @@ export class CandidateService {
     return this.http.post(AppConfig.apiURL + 'candidate', candidate);
   }
 
-  updateQuestion(candidate: Candidate): Observable<any> {
+  updateCandidate(candidate: Candidate): Observable<any> {
     return this.http.put(
       AppConfig.apiURL + 'candidate',
       candidate,

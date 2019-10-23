@@ -1,11 +1,7 @@
 <h2>Candidate Detail</h2>
 
 <form *ngIf="candidate" class="example-form">
-  <input type="hidden" [(ngModel)]="candidate.Id" id="candidateId" name="candidateId" />
-
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Candidate" [(ngModel)]="Candidate.text" name="text" />
-  </mat-form-field>
+  <input type="hidden" [(ngModel)]="candidate.id" id="id" name="candidateId" />
 
   <mat-form-field class="example-full-width">
     <textarea name="First Name" matInput placeholder="First Name" [(ngModel)]="candidate.firstName"></textarea>
