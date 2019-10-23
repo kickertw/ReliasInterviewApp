@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Candidate } from '../shared/models/candidate.model';
 import { CandidateService } from '../candidate.service';
 
@@ -10,6 +10,7 @@ import { CandidateService } from '../candidate.service';
 })
 export class CandidateDetailComponent implements OnInit {
   candidate: Candidate;
+  candidateLoaded = false;
 
   constructor(
     private router: Router,
@@ -26,7 +27,8 @@ export class CandidateDetailComponent implements OnInit {
         firstName: '',
         lastName: '',
         positionType: '',
-        created: null
+        created: null,
+        tests: null
       };
     } else {
       this.getCandidate(candidateId);
@@ -36,24 +38,25 @@ export class CandidateDetailComponent implements OnInit {
   getCandidate(id: number): void {
     this.candidateService.getCandidate(id).subscribe(response => {
       this.candidate = response;
+      this.candidateLoaded = true;
     });
   }
 
   saveCandidate() {
     if (this.candidate.id === 0) {
-      this.candidateService
-        .createCandidate(this.candidate)
-        .subscribe(
-          response => console.log(response),
-          error => console.log(error)
-        );
+      this.candidate.created = new Date();
+      console.log(this.candidate);
+      this.candidateService.createCandidate(this.candidate).subscribe(() => {
+        this.router.navigate(['/']);
+      });
     } else {
-      this.candidateService
-        .updateCandidate(this.candidate)
-        .subscribe(
-          response => console.log(response),
-          error => console.log(error)
-        );
+      this.candidateService.updateCandidate(this.candidate).subscribe(() => {
+        this.router.navigate(['/']);
+      });
     }
+  }
+
+  goToTest(testId) {
+    this.router.navigate(['/test', testId]);
   }
 }
