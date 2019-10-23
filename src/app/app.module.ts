@@ -20,7 +20,16 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatTableModule, MatSortModule, MatFormFieldModule, MatInputModule, MatIconModule } from '@angular/material';
+import {
+  MatTableModule,
+  MatSortModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatToolbarModule,
+  MatButtonModule,
+  MatIconModule
+} from '@angular/material';
+
 import { QuestionListComponent } from './questions/list/question-list.component';
 import { QuestionDetailComponent } from './questions/detail/question-detail.component';
 
@@ -30,7 +39,12 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [AppComponent, QuestionListComponent, QuestionDetailComponent, LoginComponent],
+  declarations: [
+    AppComponent,
+    QuestionListComponent,
+    QuestionDetailComponent,
+    LoginComponent
+  ],
   imports: [
     BrowserModule,
     FormsModule,
@@ -52,7 +66,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatSortModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatToolbarModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
