@@ -25,12 +25,12 @@ export class CandidateService {
   }
 
   createCandidate(candidate: Candidate): Observable<any> {
-    return this.http.post(AppConfig.apiURL + 'candidates', candidate);
+    return this.http.post(AppConfig.apiURL + 'candidate', candidate);
   }
 
   updateCandidate(candidate: Candidate): Observable<any> {
     return this.http.put(
-      AppConfig.apiURL + 'candidates',
+      AppConfig.apiURL + 'candidate',
       candidate,
       this.httpOptions
     );
