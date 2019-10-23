@@ -19,13 +19,8 @@ body {
   -webkit-app-region: drag;
   height: 30px;
   max-height: 30px;
-  .material-icons {
-    padding-left: 1rem;
-    font-size: 1rem;
-    &:hover {
-      font-size: 2rem;
-      cursor: pointer;
-    }
+  button {
+    -webkit-app-region: no-drag;
   }
 }
 
