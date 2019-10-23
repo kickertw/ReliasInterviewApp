@@ -1,5 +1,11 @@
 <h1>Questions</h1>
 
+<a [routerLink]="'/question/detail/0'">
+  <button mat-icon-button color="primary" aria-label="Add Question">
+      <mat-icon>note_add</mat-icon>
+  </button>
+</a>
+
 <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
   <ng-container matColumnDef="Id">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
