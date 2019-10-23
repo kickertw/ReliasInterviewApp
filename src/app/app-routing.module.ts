@@ -4,6 +4,7 @@ import { PageNotFoundComponent } from './shared/components';
 import { LoginComponent } from './login/login.component';
 import { QuestionListComponent } from './questions/list/question-list.component';
 import { QuestionDetailComponent } from './questions/detail/question-detail.component';
+import { CandidateDetailComponent } from './candidates/detail/candidate-detail.component';
 import { CandidatesListComponent } from './candidates/list/candidates-list.component';
 
 const routes: Routes = [
@@ -25,8 +26,19 @@ const routes: Routes = [
       }
     ]
   },
-  {path: 'candidatelist',
-  component: CandidatesListComponent},
+  {
+    path: 'candidate',
+    children: [
+      {
+          path: 'list',
+          component: CandidatesListComponent
+      },
+      {
+        path: 'detail/:id',
+        component: CandidateDetailComponent
+      }
+    ]
+  },
   {
     path: '**',
     component: PageNotFoundComponent
