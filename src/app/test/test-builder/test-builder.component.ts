@@ -31,15 +31,16 @@ export class TestBuilderComponent implements OnInit {
         this.currentTest = test;
 
         allQuestions.forEach(q => {
-          let isInTest = this.currentTest.testQuestions.some(i => {
-            return i.questionId === q.id;
-          });
-          if (isInTest)
-          {
+          let isInTest = false;
+          if (this.currentTest.testQuestions) {
+            isInTest = this.currentTest.testQuestions.some(i => {
+              return i.question.questionId === q.id;
+            });
+          }
+          if (isInTest) {
             console.log("target got here");
             this.target.push(q);
-          } else 
-          {
+          } else {
             console.log("source got here");
             this.source.push(q);
           }
@@ -48,7 +49,7 @@ export class TestBuilderComponent implements OnInit {
   }
 
   onDualListChange() {
-    this.target.forEach(q => { 
+    this.target.forEach(q => {
       this.testService.addTestQuestion(1, q.id).subscribe();
     });
 
