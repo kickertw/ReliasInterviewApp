@@ -34,6 +34,7 @@ import { AngularDualListBoxModule } from 'angular-dual-listbox';
 import { QuestionListComponent } from './questions/list/question-list.component';
 import { QuestionDetailComponent } from './questions/detail/question-detail.component';
 import { TestBuilderComponent } from './test/test-builder/test-builder.component';
+import { TestPlayerComponent } from './test-player/test-player.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -46,7 +47,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     QuestionListComponent,
     QuestionDetailComponent,
     LoginComponent,
-    TestBuilderComponent
+    TestBuilderComponent,
+    TestPlayerComponent
   ],
   imports: [
     BrowserModule,
