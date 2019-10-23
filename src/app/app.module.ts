@@ -29,9 +29,11 @@ import {
   MatButtonModule,
   MatIconModule
 } from '@angular/material';
+import { AngularDualListBoxModule } from 'angular-dual-listbox';
 
 import { QuestionListComponent } from './questions/list/question-list.component';
 import { QuestionDetailComponent } from './questions/detail/question-detail.component';
+import { TestBuilderComponent } from './test/test-builder/test-builder.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -43,7 +45,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     QuestionListComponent,
     QuestionDetailComponent,
-    LoginComponent
+    LoginComponent,
+    TestBuilderComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +71,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatInputModule,
     MatIconModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    AngularDualListBoxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

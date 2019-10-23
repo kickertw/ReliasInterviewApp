@@ -37,6 +37,7 @@ function createWindow() {
     );
   }
 
+  // Uncomment the below if you want dev tools to open automatically
   if (serve) {
     win.webContents.openDevTools();
   }
