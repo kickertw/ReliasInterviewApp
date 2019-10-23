@@ -1,6 +1,8 @@
+import { CandidateTestQuestion } from "./candidate-test-question.model";
+
 export interface CandidateTest {
-  id: number;
-  firstName: string;
-  lastName: string;
-  positionType: string;
+  testId: number;
+  candidateId: number;
+  testQuestions: Array<CandidateTestQuestion>;
+
 }

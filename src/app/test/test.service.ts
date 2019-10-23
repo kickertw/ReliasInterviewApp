@@ -22,12 +22,12 @@ export class TestService {
   }
 
   addTestQuestion(testId: number, questionId: number): Observable<any> {
+    console.log("tim");
     return this.http.post(AppConfig.apiURL + '/test/question',
     {
       testId: testId,
       questionid: questionId
-    },
-    this.httpOptions);
+    });
   }
 
   removeTestQuestion(testId: number, questionId: number): Observable<any> {

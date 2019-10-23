@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { TestService } from '../test.service';
 import { QuestionService } from '../../questions/question.service';
 import { Question } from '../../questions/shared/models/question.model';
+import { CandidateTest } from '../shared/models/candidate-test.model';
+import { Observable, forkJoin } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-test-builder',
@@ -11,27 +14,46 @@ import { Question } from '../../questions/shared/models/question.model';
 export class TestBuilderComponent implements OnInit {
   key = 'id';
   display = 'text';
-  source = [
-    { id: 0, text: 'Item 1'},
-    { id: 1, text: 'Item 2'},
-    { id: 2, text: 'Item 3'},
-    { id: 3, text: 'Item 4'},
-  ];
+  source =[];
   target = [];
+  currentTest: CandidateTest;
 
   constructor(
     private testService: TestService,
     private questionService: QuestionService) { }
 
   ngOnInit() {
-    this.questionService.getQuestions().subscribe(resp => {
-      this.source = resp.map((data: Question) => {
-        return { id: data.questionId, text: data.text };
+    forkJoin(this.questionService.getQuestions(), this.testService.getTest(1)).subscribe(
+      ([questions, test]) => {
+        let allQuestions = questions.map((data: Question) => {
+          return { id: data.questionId, text: data.text };
+        });
+        this.currentTest = test;
+
+        allQuestions.forEach(q => {
+          let isInTest = this.currentTest.testQuestions.some(i => {
+            return i.questionId === q.id;
+          });
+          if (isInTest)
+          {
+            console.log("target got here");
+            this.target.push(q);
+          } else 
+          {
+            console.log("source got here");
+            this.source.push(q);
+          }
+        })
       });
-    });
   }
 
   onDualListChange() {
-    console.log(this.target);
+    this.target.forEach(q => { 
+      this.testService.addTestQuestion(1, q.id).subscribe();
+    });
+
+    this.source.forEach(q => {
+      this.testService.removeTestQuestion(1, q.id).subscribe();
+    })
   }
 }
