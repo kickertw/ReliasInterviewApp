@@ -1,1 +1,28 @@
-<p>candidate-detail works!</p>
+<h2>Candidate Detail</h2>
+
+<form *ngIf="candidate" class="example-form">
+  <input type="hidden" [(ngModel)]="candidate.Id" id="candidateId" name="candidateId" />
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Candidate" [(ngModel)]="Candidate.text" name="text" />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <textarea name="First Name" matInput placeholder="First Name" [(ngModel)]="candidate.firstName"></textarea>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input name="Last Name" matInput placeholder="Last Name" [(ngModel)]="candidate.lastName" />
+  </mat-form-field>
+  
+  <mat-form-field class="example-full-width">
+    <input name="Position Type" matInput placeholder="Position Type" [(ngModel)]="candidate.positionType" />
+  </mat-form-field>
+  
+  <mat-form-field class="example-full-width">
+    <input name="Created" matInput placeholder="Created" [(ngModel)]="candidate.created" />
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="saveCandidate()">Save</button>
+  <a mat-raised-button routerLink="/candidate/list">Cancel</a>
+</form>
