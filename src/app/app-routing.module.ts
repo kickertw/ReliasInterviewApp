@@ -10,7 +10,7 @@ import { CandidatesListComponent } from './candidates/list/candidates-list.compo
 const routes: Routes = [
   {
     path: '',
-    component: QuestionListComponent,
+    component: CandidatesListComponent,
     pathMatch: 'full'
   },
   {
