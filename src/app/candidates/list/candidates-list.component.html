@@ -1,4 +1,11 @@
 <h1>Candidate List</h1>
+
+<a [routerLink]="'/candidate/detail/0'">
+  <button mat-icon-button color="primary" aria-label="Add Candidate">
+      <mat-icon>note_add</mat-icon>
+  </button>
+</a>
+
 <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
   <!-- Position Column -->
