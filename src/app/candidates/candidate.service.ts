@@ -8,27 +8,31 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CandidateService {
-
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type':  'application/json'
+      'Content-Type': 'application/json'
     })
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
+
+  getCandidate(id: number): Observable<any> {
+    return this.http.get(AppConfig.apiURL + 'candidate/' + id);
+  }
 
   getCandidates(): Observable<any> {
-    return this.http.get(AppConfig.apiURL + 'candidate');
+    return this.http.get(AppConfig.apiURL + 'candidates');
   }
 
   createCandidate(candidate: Candidate): Observable<any> {
-    return this.http.post(AppConfig.apiURL + 'candidate', candidate);
+    return this.http.post(AppConfig.apiURL + 'candidates', candidate);
   }
 
   updateCandidate(candidate: Candidate): Observable<any> {
     return this.http.put(
-      AppConfig.apiURL + 'candidate',
+      AppConfig.apiURL + 'candidates',
       candidate,
-      this.httpOptions);
+      this.httpOptions
+    );
   }
 }
