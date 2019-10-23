@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild, Injectable} from '@angular/core';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { Candidate } from '../shared/models/candidate.model';
-import { Observable, of } from 'rxjs';
+import { CandidateService } from '../candidate.service';
 
 @Component({
   selector: 'app-candidates-list',
@@ -27,22 +27,3 @@ export class CandidatesListComponent implements OnInit {
   }
 
 }
-
-@Injectable({
-  providedIn: 'root'
-})
-export class CandidateService {
-  getCandidates(): Observable<Candidate[]> {
-    return of([{id: 1,
-      firstName: 'first',
-      lastName: 'last',
-      positionType: 'Engineer1',
-      created: 'this is the description'
-      },{id: 2,
-        firstName: 'second',
-        lastName: 'last2',
-        positionType: 'Engineer2',
-        created: 'this is the description'}])
-  }
-}
-
