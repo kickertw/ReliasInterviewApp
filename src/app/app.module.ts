@@ -32,6 +32,7 @@ import {
 
 import { QuestionListComponent } from './questions/list/question-list.component';
 import { QuestionDetailComponent } from './questions/detail/question-detail.component';
+import { CandidatesListComponent } from './candidates/list/candidates-list.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -39,12 +40,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    QuestionListComponent,
-    QuestionDetailComponent,
-    LoginComponent
-  ],
+  declarations: [AppComponent, QuestionListComponent, QuestionDetailComponent, LoginComponent, CandidatesListComponent],
   imports: [
     BrowserModule,
     FormsModule,
