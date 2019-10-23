@@ -1,6 +1,8 @@
-import { Component, OnInit, Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import {Component, OnInit, ViewChild, Injectable} from '@angular/core';
+import {MatSort} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
 import { Candidate } from '../shared/models/candidate.model';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-candidates-list',
@@ -8,16 +10,20 @@ import { Candidate } from '../shared/models/candidate.model';
   styleUrls: ['./candidates-list.component.scss']
 })
 export class CandidatesListComponent implements OnInit {
+  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'positionType', 'created'];
+  ELEMENT_DATA: Candidate[];
+  dataSource: MatTableDataSource<any>;
 
-  candidates: Candidate[];
+  constructor(private candidateService: CandidateService){}
 
-  constructor(private candidateService: CandidateService) { }
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   ngOnInit() {
-    this.candidateService.GetCandidates().subscribe(res => {
-      this.candidates = res;
-      console.log(this.candidates)
-    });
+    this.candidateService.getCandidates().subscribe(res => {
+      this.ELEMENT_DATA = res;
+    })
+    this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
+    this.dataSource.sort = this.sort;
   }
 
 }
@@ -26,7 +32,7 @@ export class CandidatesListComponent implements OnInit {
   providedIn: 'root'
 })
 export class CandidateService {
-  GetCandidates(): Observable<Candidate[]> {
+  getCandidates(): Observable<Candidate[]> {
     return of([{id: 1,
       firstName: 'first',
       lastName: 'last',
