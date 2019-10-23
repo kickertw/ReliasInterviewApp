@@ -25,12 +25,12 @@ export class TestBuilderComponent implements OnInit {
   ngOnInit() {
     forkJoin(this.questionService.getQuestions(), this.testService.getTest(1)).subscribe(
       ([questions, test]) => {
-        let allQuestions = questions.map((data: Question) => {
+        this.source = questions.map((data: Question) => {
           return { id: data.questionId, text: data.text };
         });
         this.currentTest = test;
 
-        allQuestions.forEach(q => {
+        this.source.forEach(q => {
           let isInTest = false;
           if (this.currentTest.testQuestions) {
             isInTest = this.currentTest.testQuestions.some(i => {
@@ -38,13 +38,9 @@ export class TestBuilderComponent implements OnInit {
             });
           }
           if (isInTest) {
-            console.log("target got here");
             this.target.push(q);
-          } else {
-            console.log("source got here");
-            this.source.push(q);
           }
-        })
+        });
       });
   }
 
@@ -53,8 +49,10 @@ export class TestBuilderComponent implements OnInit {
       this.testService.addTestQuestion(1, q.id).subscribe();
     });
 
-    this.source.forEach(q => {
-      this.testService.removeTestQuestion(1, q.id).subscribe();
-    })
+    for (let ii = 0; ii < this.source.length; ii++) {
+      if (!this.target.includes(this.source[ii])) {
+        this.testService.removeTestQuestion(1, this.source[ii].id).subscribe();
+      }
+    }
   }
 }
