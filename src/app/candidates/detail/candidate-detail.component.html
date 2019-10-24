@@ -65,6 +65,7 @@
           {{ test.name }}
         </td>
         <td
+          *ngIf="test?.hasQuestions"
           [routerLink]="['/test-player/', test.testId]"
           class="clickable icon-cell"
           bgcolor="#3f51b5"

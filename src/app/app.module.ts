@@ -43,6 +43,7 @@ import {
 } from './candidates/detail/candidate-detail.component';
 import { TestBuilderComponent } from './test/test-builder/test-builder.component';
 import { TestPlayerComponent } from './test/test-player/test-player.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -59,7 +60,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     CandidateDetailComponent,
     TestBuilderComponent,
     TestPlayerComponent,
-    DialogOverviewExampleDialogComponent
+    DialogOverviewExampleDialogComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

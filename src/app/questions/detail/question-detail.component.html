@@ -1,5 +1,8 @@
 <h2>Question Detail</h2>
 
+
+<a [routerLink]="'/question/list'">Back to Question List</a>
+
 <form *ngIf="question" class="example-form">
   <input type="hidden" [(ngModel)]="question.questionId" id="questionId" name="questionId" />
 

@@ -8,11 +8,12 @@ import { CandidateDetailComponent } from './candidates/detail/candidate-detail.c
 import { CandidatesListComponent } from './candidates/list/candidates-list.component';
 import { TestBuilderComponent } from './test/test-builder/test-builder.component';
 import { TestPlayerComponent } from './test/test-player/test-player.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: CandidatesListComponent,
+    component: DashboardComponent,
     pathMatch: 'full'
   },
   {
