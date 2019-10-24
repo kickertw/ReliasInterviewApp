@@ -6,6 +6,7 @@ import { Question } from '../questions/shared/models/question.model';
 import { Response } from './shared/models/response.model';
 import { MatSort, MatTableDataSource } from '@angular/material';
 import { Router, ActivatedRoute } from '@angular/router';
+import { CandidateTestQuestion } from '../test/shared/models/candidate-test-question.model';
 
 
 @Component({
@@ -18,6 +19,7 @@ export class TestPlayerComponent implements OnInit {
   dataSource: MatTableDataSource<Question>;
   questions: Array<Question>;
   responses: Array<Response>;
+  testQuestions: Array<CandidateTestQuestion>;
   response: Response;
   testId: number;
 
@@ -34,20 +36,24 @@ export class TestPlayerComponent implements OnInit {
 
   buildTest(): void {
     // get list of questions
-    // get list of already saved responses
-  }
+      this.testService.getTest(1).subscribe(response => {
+      this.testQuestions = response.testQuestions;
+      });
+      // get list of already saved responses
+    }
+
   getResponse(id: number): void {
-    this.testPlayerService.getResponse().subscribe(response => {
-      this.response = response.filter(obj => obj.responseId === id)[0];
-    });
-  }
+        this.testPlayerService.getResponse().subscribe(response => {
+          this.response = response.filter(obj => obj.responseId === id)[0];
+        });
+      }
 
   getResponses(testId: number): void {
-    this.testPlayerService.getResponses(testId);
-  }
+        this.testPlayerService.getResponses(testId);
+      }
 
   saveResponse() {
-    if (this.response.answer === null){
+        if(this.response.answer === null){
       this.testPlayerService.createResponse(this.response).subscribe(
         response => console.log(response),
         error => console.log(error)
