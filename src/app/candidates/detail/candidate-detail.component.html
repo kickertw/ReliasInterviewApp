@@ -1,6 +1,8 @@
 <div class="container">
-  <h2>Candidate Details</h2>
-  <a [routerLink]="'/candidate/list'">Back to Candidate List</a>
+  <a [routerLink]="['/candidate/list']" routerLinkActive="router-link-active"
+    ><i class="material-icons"> keyboard_backspace </i
+    ><span> Back to Candidate List</span></a
+  >
   <h4>Candidate Information</h4>
   <form *ngIf="candidate" class="example-form">
     <input
@@ -45,7 +47,6 @@
       >
         Save
       </button>
-      <a mat-raised-button routerLink="/candidate/list">Cancel</a>
     </div>
   </form>
   <h4>Tests</h4>
@@ -63,7 +64,8 @@
         >
           {{ test.name }}
         </td>
-        <td *ngIf="test?.hasQuestions"
+        <td
+          *ngIf="test?.hasQuestions"
           [routerLink]="['/test-player/', test.testId]"
           class="clickable icon-cell"
           bgcolor="#3f51b5"

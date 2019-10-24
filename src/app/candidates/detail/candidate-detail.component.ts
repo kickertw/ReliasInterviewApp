@@ -60,7 +60,8 @@ export class CandidateDetailComponent implements OnInit {
         },
         () => {
           this.toastr.error('', 'An unexpected error has occurred!', { timeOut: 2000 });
-        });
+        }
+      );
     } else {
       this.candidateService.updateCandidate(this.candidate).subscribe(
         () => {
@@ -69,7 +70,8 @@ export class CandidateDetailComponent implements OnInit {
         },
         () => {
           this.toastr.error('', 'An unexpected error has occurred!', { timeOut: 2000 });
-        });
+        }
+      );
     }
   }
 

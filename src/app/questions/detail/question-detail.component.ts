@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Question } from '../shared/models/question.model';
 import { QuestionService } from '../question.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-question-detail',
@@ -15,7 +16,8 @@ export class QuestionDetailComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private questionService: QuestionService) { }
+    private questionService: QuestionService,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
     const questionId = +this.route.snapshot.paramMap.get('id');
@@ -44,13 +46,23 @@ export class QuestionDetailComponent implements OnInit {
   saveQuestion() {
     if (this.question.questionId === 0){
       this.questionService.createQuestion(this.question).subscribe(
-        response => console.log(response),
-        error => console.log(error)
+        () => {
+          this.toastr.success('', 'Updated!');
+          this.router.navigate(['/question/list']);
+        },
+        () => {
+          this.toastr.error('', 'An unexpected error has occurred!');
+        }
       );
     } else {
       this.questionService.updateQuestion(this.question).subscribe(
-        response => console.log(response),
-        error => console.log(error)
+        () => {
+          this.toastr.success('', 'Updated!');
+          this.router.navigate(['/question/list']);
+        },
+        () => {
+          this.toastr.error('', 'An unexpected error has occurred!');
+        }
       );
     }
   }
