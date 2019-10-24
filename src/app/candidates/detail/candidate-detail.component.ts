@@ -77,6 +77,10 @@ export class CandidateDetailComponent implements OnInit {
     this.router.navigate(['/test-builder', testId]);
   }
 
+  allRequiredFields() {
+    return this.candidate.firstName.length > 0 && this.candidate.lastName.length > 0 && this.candidate.positionType.length > 0;
+  }
+
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialogComponent, {
       width: '250px',

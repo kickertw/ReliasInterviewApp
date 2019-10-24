@@ -37,7 +37,7 @@
       />
     </mat-form-field>
     <div>
-      <button
+      <button [disabled]="!allRequiredFields()"
         class="mr-3"
         mat-raised-button
         color="primary"
