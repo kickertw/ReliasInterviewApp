@@ -50,42 +50,44 @@
       </button>
     </div>
   </form>
-  <h4>Tests</h4>
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>Name</th>
-      </tr>
-    </thead>
-    <tbody *ngIf="candidateLoaded">
-      <tr *ngFor="let test of candidate.tests">
-        <td
-          [routerLink]="['/test-builder/', test.testId]"
-          class="clickable name-cell"
-        >
-          {{ test.name }}
-        </td>
-        <td
-          *ngIf="test?.hasQuestions"
-          [routerLink]="['/test-player/', test.testId]"
-          class="clickable icon-cell"
-          bgcolor="#3f51b5"
-        >
-          <i class="material-icons">
-            keyboard_arrow_right
-          </i>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="d-flex justify-content-end">
-    <button
-      (click)="openDialog()"
-      mat-icon-button
-      color="primary"
-      aria-label="Add Test"
-    >
-      <mat-icon>note_add</mat-icon>
-    </button>
+  <div *ngIf="candidateLoaded && candidate.id !== 0">
+    <h4>Tests</h4>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let test of candidate.tests">
+          <td
+            [routerLink]="['/test-builder/', test.testId]"
+            class="clickable name-cell"
+          >
+            {{ test.name }}
+          </td>
+          <td
+            *ngIf="test?.hasQuestions"
+            [routerLink]="['/test-player/', test.testId]"
+            class="clickable icon-cell"
+            bgcolor="#3f51b5"
+          >
+            <i class="material-icons">
+              keyboard_arrow_right
+            </i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-end">
+      <button
+        (click)="openDialog()"
+        mat-icon-button
+        color="primary"
+        aria-label="Add Test"
+      >
+        <mat-icon>note_add</mat-icon>
+      </button>
+    </div>
   </div>
 </div>

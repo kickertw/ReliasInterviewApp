@@ -1,20 +1,45 @@
-<h1>{{ currentTest?.name }}</h1>
+<h4>{{ currentTest?.name }}</h4>
+<div *ngIf="currentTest">
+  <mat-accordion multi="true">
+    <mat-expansion-panel *ngFor="let testQuestion of currentTest.testQuestions">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ testQuestion.question.text }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-form-field style="width:80%">
+        <textarea
+          [disabled]="currentTest.finished"
+          matInput
+          placeholder="Answer"
+          [(ngModel)]="testQuestion.answer"
+          rows="4"
+          (blur)="
+            saveResponse(testQuestion.testQuestionsId, testQuestion.answer)
+          "
+        ></textarea>
+      </mat-form-field>
+    </mat-expansion-panel>
+  </mat-accordion>
 
-<mat-accordion multi="true" *ngIf="currentTest">
-  <mat-expansion-panel *ngFor="let testQuestion of currentTest.testQuestions">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        {{ testQuestion.question.text }}
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <mat-form-field style="width:80%">
-      <textarea
-        matInput
-        placeholder="Answer"
-        [(ngModel)]="testQuestion.answer"
-        rows="4"
-        (blur)="saveResponse(testQuestion.testQuestionId, testQuestion.answer)"
-      ></textarea>
-    </mat-form-field>
-  </mat-expansion-panel>
-</mat-accordion>
+  <div>
+    <button
+      *ngIf="!currentTest.finished"
+      class="mt-3 mr-3"
+      mat-raised-button
+      color="primary"
+      (click)="finishTest()"
+    >
+      Finish Test
+    </button>
+    <button
+      *ngIf="currentTest.finished"
+      class="mt-3 mr-3"
+      mat-raised-button
+      color="primary"
+      disabled="true"
+    >
+      Completed!
+    </button>
+  </div>
+</div>

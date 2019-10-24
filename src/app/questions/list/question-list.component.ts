@@ -28,20 +28,6 @@ export class QuestionListComponent implements OnInit {
   getQuestionLevel(level: number) {
     switch (level) {
       case 0: {
-        return 'Behavioral';
-      }
-      case 1: {
-        return 'Technical';
-      }
-      default: {
-        return 'Misc.';
-      }
-    }
-  }
-
-  getQuestionType (type: number) {
-    switch (type) {
-      case 0: {
         return 'Junior';
       }
       case 1: {
@@ -49,6 +35,20 @@ export class QuestionListComponent implements OnInit {
       }
       default: {
         return 'Señor';
+      }
+    }
+  }
+
+  getQuestionType (type: number) {
+    switch (type) {
+      case 0: {
+        return 'Behavioral';
+      }
+      case 1: {
+        return 'Technical';
+      }
+      default: {
+        return 'Misc.';
       }
     }
   }
