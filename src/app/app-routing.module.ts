@@ -4,8 +4,13 @@ import { PageNotFoundComponent } from './shared/components';
 import { LoginComponent } from './login/login.component';
 import { QuestionListComponent } from './questions/list/question-list.component';
 import { QuestionDetailComponent } from './questions/detail/question-detail.component';
+<<<<<<< HEAD
 import { CandidateDetailComponent } from './candidates/detail/candidate-detail.component';
 import { CandidatesListComponent } from './candidates/list/candidates-list.component';
+=======
+import { TestBuilderComponent } from './test/test-builder/test-builder.component';
+import { TestPlayerComponent} from './test-player/test-player.component';
+>>>>>>> tw-branch
 
 const routes: Routes = [
   {
@@ -17,8 +22,8 @@ const routes: Routes = [
     path: 'question',
     children: [
       {
-          path: 'list',
-          component: QuestionListComponent
+        path: 'list',
+        component: QuestionListComponent
       },
       {
         path: 'detail/:id',
@@ -27,6 +32,7 @@ const routes: Routes = [
     ]
   },
   {
+<<<<<<< HEAD
     path: 'candidate',
     children: [
       {
@@ -38,6 +44,14 @@ const routes: Routes = [
         component: CandidateDetailComponent
       }
     ]
+=======
+    path: 'test-builder',
+    component: TestBuilderComponent
+  },
+  {
+    path: 'test-player',
+    component: TestPlayerComponent
+>>>>>>> tw-branch
   },
   {
     path: '**',

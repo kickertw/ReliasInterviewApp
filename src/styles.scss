@@ -2,13 +2,7 @@
 html,
 body {
   margin: 0;
-  padding: 0;
-
-  height: 100%;
-}
-
-html,
-body {
+  padding: 0;  
   height: 100%;
 }
 body {
@@ -34,4 +28,8 @@ body {
   /* This fills the remaining space, by using flexbox. 
      Every toolbar row uses a flexbox row layout. */
   flex: 1 1 auto;
+}
+
+.main-container {
+  padding-left: 1rem;
 }

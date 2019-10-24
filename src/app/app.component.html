@@ -1,22 +1,34 @@
-<mat-toolbar class="menu-bar" color="primary"
-  ><span>Relias Interview Tool</span>
-  <span class="fill-space"></span>
-  <div>
-    <button id="min-btn" mat-button>
-      <i class="material-icons">
-        minimize
-      </i>
-    </button>
-    <button id="max-btn" mat-button>
-      <i class="material-icons">
-        filter_none
-      </i>
-    </button>
-    <button id="close-btn" mat-button>
-      <i class="material-icons">
-        clear
-      </i>
-    </button>
-  </div></mat-toolbar
->
-<router-outlet></router-outlet>
+<html>
+  <body>
+    <mat-toolbar class="menu-bar" color="primary">
+      <span>Relias Interview Tool</span>
+      <span class="fill-space"></span>
+      <div>
+        <button id="min-btn" mat-button>
+          <i class="material-icons">
+            minimize
+          </i>
+        </button>
+        <button id="max-btn" mat-button>
+          <i class="material-icons">
+            filter_none
+          </i>
+        </button>
+        <button id="close-btn" mat-button>
+          <i class="material-icons">
+            clear
+          </i>
+        </button>
+      </div>
+    </mat-toolbar>
+
+    <div class="main-container">
+      <ul>
+        <li><a [routerLink]="'/question/list'">Questions</a></li>
+        <li><a [routerLink]="'/test-builder'">Test Builder</a></li>
+        <li><a [routerLink]="'/test-player'">Test Player</a></li>
+      </ul>
+      <router-outlet></router-outlet>
+    </div>  
+  </body>
+</html>

@@ -29,11 +29,14 @@ import {
   MatButtonModule,
   MatIconModule
 } from '@angular/material';
+import { AngularDualListBoxModule } from 'angular-dual-listbox';
 
 import { QuestionListComponent } from './questions/list/question-list.component';
 import { QuestionDetailComponent } from './questions/detail/question-detail.component';
 import { CandidatesListComponent } from './candidates/list/candidates-list.component';
 import { CandidateDetailComponent } from './candidates/detail/candidate-detail.component';
+import { TestBuilderComponent } from './test/test-builder/test-builder.component';
+import { TestPlayerComponent } from './test-player/test-player.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -41,7 +44,16 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [AppComponent, QuestionListComponent, QuestionDetailComponent, LoginComponent, CandidatesListComponent, CandidateDetailComponent],
+  declarations: [
+    AppComponent,
+    QuestionListComponent,
+    QuestionDetailComponent,
+    LoginComponent,
+    CandidatesListComponent,
+    CandidateDetailComponent,
+    TestBuilderComponent,
+    TestPlayerComponent
+  ],
   imports: [
     BrowserModule,
     FormsModule,
@@ -65,7 +77,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatInputModule,
     MatIconModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    AngularDualListBoxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
