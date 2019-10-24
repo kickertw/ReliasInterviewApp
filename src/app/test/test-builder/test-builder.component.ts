@@ -3,9 +3,9 @@ import { TestService } from '../test.service';
 import { QuestionService } from '../../questions/question.service';
 import { Question } from '../../questions/shared/models/question.model';
 import { CandidateTest } from '../shared/models/candidate-test.model';
-import { Observable, forkJoin } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { forkJoin } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-test-builder',
@@ -15,14 +15,16 @@ import { ActivatedRoute } from '@angular/router';
 export class TestBuilderComponent implements OnInit {
   key = 'id';
   display = 'text';
-  source =[];
+  source = [];
   target = [];
   currentTest: CandidateTest;
+  private isLastUpdate = false;
 
   constructor(
     private route: ActivatedRoute,
     private testService: TestService,
-    private questionService: QuestionService) { }
+    private questionService: QuestionService,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
     const testId = +this.route.snapshot.paramMap.get('id');
@@ -48,13 +50,25 @@ export class TestBuilderComponent implements OnInit {
   }
 
   onDualListChange() {
+    this.toastr.info('', 'Saving...');
+
     this.target.forEach(q => {
       this.testService.addTestQuestion(this.currentTest.testId, q.id).subscribe();
     });
 
     for (let ii = 0; ii < this.source.length; ii++) {
       if (!this.target.includes(this.source[ii])) {
-        this.testService.removeTestQuestion(this.currentTest.testId, this.source[ii].id).subscribe();
+        if (ii === this.source.length - 1) {
+          this.isLastUpdate = true;
+        }
+        this.testService.removeTestQuestion(this.currentTest.testId, this.source[ii].id).subscribe(
+          () => {
+            if (this.isLastUpdate) {
+              this.toastr.success('', 'Questions successfully saved.');
+              this.isLastUpdate = false;
+            }
+          }
+        );
       }
     }
   }
