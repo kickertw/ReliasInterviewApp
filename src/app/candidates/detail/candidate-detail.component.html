@@ -61,7 +61,7 @@
         *ngFor="let test of candidate.tests"
         [routerLink]="['/test/', test.testId]"
       >
-        <td class="clickable">{{ test.testId }}</td>
+        <td class="clickable">{{ test.name }}</td>
       </tr>
     </tbody>
   </table>

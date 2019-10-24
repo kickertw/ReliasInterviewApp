@@ -77,7 +77,7 @@ export class CandidateDetailComponent implements OnInit {
       this.testService
         .createTest(this.newTestName, this.candidate.id)
         .subscribe(res => {
-          this.router.navigate(['test-builder', res.id]);
+          this.router.navigate(['test-builder', res.testId]);
         });
     });
   }
