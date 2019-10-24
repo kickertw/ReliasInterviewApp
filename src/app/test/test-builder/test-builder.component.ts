@@ -5,6 +5,7 @@ import { Question } from '../../questions/shared/models/question.model';
 import { CandidateTest } from '../shared/models/candidate-test.model';
 import { Observable, forkJoin } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-test-builder',
@@ -19,11 +20,13 @@ export class TestBuilderComponent implements OnInit {
   currentTest: CandidateTest;
 
   constructor(
+    private route: ActivatedRoute,
     private testService: TestService,
     private questionService: QuestionService) { }
 
   ngOnInit() {
-    forkJoin(this.questionService.getQuestions(), this.testService.getTest(1)).subscribe(
+    const testId = +this.route.snapshot.paramMap.get('id');
+    forkJoin(this.questionService.getQuestions(), this.testService.getTest(testId)).subscribe(
       ([questions, test]) => {
         this.source = questions.map((data: Question) => {
           return { id: data.questionId, text: data.text };
@@ -46,12 +49,12 @@ export class TestBuilderComponent implements OnInit {
 
   onDualListChange() {
     this.target.forEach(q => {
-      this.testService.addTestQuestion(1, q.id).subscribe();
+      this.testService.addTestQuestion(this.currentTest.testId, q.id).subscribe();
     });
 
     for (let ii = 0; ii < this.source.length; ii++) {
       if (!this.target.includes(this.source[ii])) {
-        this.testService.removeTestQuestion(1, this.source[ii].id).subscribe();
+        this.testService.removeTestQuestion(this.currentTest.testId, this.source[ii].id).subscribe();
       }
     }
   }

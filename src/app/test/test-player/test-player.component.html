@@ -7,7 +7,7 @@
           {{testQuestion.question.text}}
         </mat-panel-title>
       </mat-expansion-panel-header>
-      <mat-form-field>
+      <mat-form-field style="width:80%">
         <textarea matInput placeholder="Answer" [(ngModel)]="testQuestion.answer" rows="4" (blur)="saveResponse(testQuestion.testQuestionId, testQuestion.answer)" ></textarea>
       </mat-form-field>
     </mat-expansion-panel>
