@@ -28,6 +28,7 @@ import {
   MatToolbarModule,
   MatButtonModule,
   MatIconModule,
+  MatExpansionModule,
   MatDialogModule
 } from '@angular/material';
 import { AngularDualListBoxModule } from 'angular-dual-listbox';
@@ -40,7 +41,7 @@ import {
   DialogOverviewExampleDialogComponent
 } from './candidates/detail/candidate-detail.component';
 import { TestBuilderComponent } from './test/test-builder/test-builder.component';
-import { TestPlayerComponent } from './test-player/test-player.component';
+import { TestPlayerComponent } from './test/test-player/test-player.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -82,6 +83,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatInputModule,
     MatIconModule,
     MatToolbarModule,
+    MatExpansionModule,
     MatButtonModule,
     AngularDualListBoxModule,
     MatDialogModule

@@ -7,7 +7,7 @@ import { QuestionDetailComponent } from './questions/detail/question-detail.comp
 import { CandidateDetailComponent } from './candidates/detail/candidate-detail.component';
 import { CandidatesListComponent } from './candidates/list/candidates-list.component';
 import { TestBuilderComponent } from './test/test-builder/test-builder.component';
-import { TestPlayerComponent } from './test-player/test-player.component';
+import { TestPlayerComponent } from './test/test-player/test-player.component';
 
 const routes: Routes = [
   {

@@ -42,4 +42,12 @@ export class TestService {
       AppConfig.apiURL + '/test/' + testId + '/question/' + questionId
     );
   }
+
+  updateTestAnswer(testQuestionId: number, answer: string): Observable<any> {
+    return this.http.put(AppConfig.apiURL + '/test/answer',
+    {
+      testQuestionId: testQuestionId,
+      answer: answer
+    });
+  }
 }
