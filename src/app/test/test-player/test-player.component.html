@@ -1,18 +1,20 @@
-<h1>{{currentTest?.name}}</h1>
+<h1>{{ currentTest?.name }}</h1>
 
 <mat-accordion multi="true" *ngIf="currentTest">
-    <mat-expansion-panel *ngFor="let testQuestion of currentTest.testQuestions">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          {{testQuestion.question.text}}
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <mat-form-field style="width:80%">
-        <textarea matInput placeholder="Answer" [(ngModel)]="testQuestion.answer" rows="4" (blur)="saveResponse(testQuestion.testQuestionId, testQuestion.answer)" ></textarea>
-      </mat-form-field>
-    </mat-expansion-panel>
-   </mat-accordion>
-
-<!-- <mat-form-field class="example-full-width">
-    <input name="answer" matInput placeholder="Answer" [(ngModel)]="response.answer" />
-</mat-form-field> -->
+  <mat-expansion-panel *ngFor="let testQuestion of currentTest.testQuestions">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ testQuestion.question.text }}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-form-field style="width:80%">
+      <textarea
+        matInput
+        placeholder="Answer"
+        [(ngModel)]="testQuestion.answer"
+        rows="4"
+        (blur)="saveResponse(testQuestion.testQuestionId, testQuestion.answer)"
+      ></textarea>
+    </mat-form-field>
+  </mat-expansion-panel>
+</mat-accordion>
