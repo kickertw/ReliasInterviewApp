@@ -1,7 +1,7 @@
 <div class="container">
-  <a [routerLink]="['/candidate/list']" routerLinkActive="router-link-active"
+  <a [routerLink]="['']" routerLinkActive="router-link-active"
     ><i class="material-icons"> keyboard_backspace </i
-    ><span> Back to Candidate List</span></a
+    ><span> Back to Dashboard</span></a
   >
   <h4>Candidate Information</h4>
   <form *ngIf="candidate" class="example-form">
@@ -39,7 +39,8 @@
       />
     </mat-form-field>
     <div>
-      <button [disabled]="!allRequiredFields()"
+      <button
+        [disabled]="!allRequiredFields()"
         class="mr-3"
         mat-raised-button
         color="primary"

@@ -20,10 +20,6 @@ const routes: Routes = [
     path: 'question',
     children: [
       {
-        path: 'list',
-        component: QuestionListComponent
-      },
-      {
         path: 'detail/:id',
         component: QuestionDetailComponent
       }
@@ -32,10 +28,6 @@ const routes: Routes = [
   {
     path: 'candidate',
     children: [
-      {
-        path: 'list',
-        component: CandidatesListComponent
-      },
       {
         path: 'detail/:id',
         component: CandidateDetailComponent
