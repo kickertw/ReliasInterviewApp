@@ -1,6 +1,6 @@
 <div class="container">
   <h2>Candidate Details</h2>
-
+  <a [routerLink]="'/candidate/list'">Back to Candidate List</a>
   <h4>Candidate Information</h4>
   <form *ngIf="candidate" class="example-form">
     <input
@@ -63,7 +63,7 @@
         >
           {{ test.name }}
         </td>
-        <td
+        <td *ngIf="test?.hasQuestions"
           [routerLink]="['/test-player/', test.testId]"
           class="clickable icon-cell"
           bgcolor="#3f51b5"
