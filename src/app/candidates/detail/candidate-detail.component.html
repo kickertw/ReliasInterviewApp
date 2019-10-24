@@ -49,19 +49,29 @@
     </div>
   </form>
   <h4>Tests</h4>
-  <table class="table table-bordered table-hover">
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>Name</th>
       </tr>
     </thead>
     <tbody *ngIf="candidateLoaded">
-      <tr
-        class="clickable"
-        *ngFor="let test of candidate.tests"
-        [routerLink]="['/test-builder/', test.testId]"
-      >
-        <td class="clickable">{{ test.name }}</td>
+      <tr *ngFor="let test of candidate.tests">
+        <td
+          [routerLink]="['/test-builder/', test.testId]"
+          class="clickable name-cell"
+        >
+          {{ test.name }}
+        </td>
+        <td
+          [routerLink]="['/test-player/', test.testId]"
+          class="clickable icon-cell"
+          bgcolor="#3f51b5"
+        >
+          <i class="material-icons">
+            keyboard_arrow_right
+          </i>
+        </td>
       </tr>
     </tbody>
   </table>
