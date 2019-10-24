@@ -2,6 +2,13 @@
   <body>
     <mat-toolbar class="menu-bar" color="primary">
       <span>Relias Interview Tool</span>
+      <a [routerLink]="''"
+        ><button id="home-btn" mat-button>
+          <i class="material-icons">
+            home
+          </i>
+        </button></a
+      >
       <span class="fill-space"></span>
       <div>
         <button id="min-btn" mat-button>
@@ -23,9 +30,6 @@
     </mat-toolbar>
 
     <div class="main-container">
-      <ul>
-        <li><a [routerLink]="''">Back to Dashboard</a></li>
-      </ul>
       <router-outlet></router-outlet>
     </div>
   </body>
