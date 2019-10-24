@@ -9,7 +9,7 @@ import { MatSort, MatTableDataSource } from '@angular/material';
   styleUrls: ['./question-list.component.scss']
 })
 export class QuestionListComponent implements OnInit {
-  displayedColumns: string[] = ['Id', 'Question', 'Type', 'Level'];
+  displayedColumns: string[] = ['Id', 'Question', 'Type', 'Level', 'go'];
   dataSource: MatTableDataSource<Question>;
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
