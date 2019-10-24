@@ -6,5 +6,6 @@ export interface CandidateTest {
   testId: number;
   candidateId: number;
   hasTestQuestions: boolean;
+  finished: boolean;
   testQuestions: Array<CandidateTestQuestion>;
 }
