@@ -46,7 +46,7 @@ const routes: Routes = [
     component: TestBuilderComponent
   },
   {
-    path: 'test-player',
+    path: 'test-player/:id',
     component: TestPlayerComponent
   },
   {
