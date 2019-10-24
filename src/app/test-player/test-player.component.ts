@@ -3,6 +3,7 @@ import { TestPlayerService } from './test-player.service';
 import { QuestionService } from '../questions/question.service';
 import { TestService } from '../test/test.service';
 import { Question } from '../questions/shared/models/question.model';
+import { CandidateTest } from '../test/shared/models/candidate-test.model';
 import { Response } from './shared/models/response.model';
 import { MatSort, MatTableDataSource } from '@angular/material';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -16,18 +17,9 @@ import { CandidateTestQuestion } from '../test/shared/models/candidate-test-ques
 })
 export class TestPlayerComponent implements OnInit {
   displayedColumns: string[] = ['Id', 'Question', 'Type', 'Level'];
-  dataSource: MatTableDataSource<Question>;
-  questions: Array<Question>;
-  responses: Array<Response>;
-  testQuestions: Array<CandidateTestQuestion>;
-  response: Response;
-  testId: number;
+  currentTest: CandidateTest;
 
   constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    private testPlayerService: TestPlayerService,
-    private questionService: QuestionService,
     private testService: TestService) { }
 
   ngOnInit() {
@@ -37,32 +29,11 @@ export class TestPlayerComponent implements OnInit {
   buildTest(): void {
     // get list of questions
       this.testService.getTest(1).subscribe(response => {
-      this.testQuestions = response.testQuestions;
+      this.currentTest = response;
       });
-      // get list of already saved responses
     }
 
-  getResponse(id: number): void {
-        this.testPlayerService.getResponse().subscribe(response => {
-          this.response = response.filter(obj => obj.responseId === id)[0];
-        });
-      }
-
-  getResponses(testId: number): void {
-        this.testPlayerService.getResponses(testId);
-      }
-
-  saveResponse() {
-        if(this.response.answer === null){
-      this.testPlayerService.createResponse(this.response).subscribe(
-        response => console.log(response),
-        error => console.log(error)
-      );
-    } else {
-      this.testPlayerService.updateResponse(this.response).subscribe(
-        response => console.log(response),
-        error => console.log(error)
-      );
+    saveResponse(id: number, answer: string): void {
+      this.testService.updateTestAnswer(id, answer).subscribe();
     }
-  }
 }

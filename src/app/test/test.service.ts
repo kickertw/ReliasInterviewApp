@@ -33,4 +33,13 @@ export class TestService {
   removeTestQuestion(testId: number, questionId: number): Observable<any> {
     return this.http.delete(AppConfig.apiURL + '/test/' + testId + '/question/' + questionId);
   }
+
+  updateTestAnswer(testQuestionId: number, answer: string): Observable<any> {
+    console.log("james");
+    return this.http.put(AppConfig.apiURL + '/test/answer', 
+    {
+      testQuestionId: testQuestionId,
+      answer: answer 
+    });
+  }
 }

@@ -27,7 +27,8 @@ import {
   MatInputModule,
   MatToolbarModule,
   MatButtonModule,
-  MatIconModule
+  MatIconModule,
+  MatExpansionModule
 } from '@angular/material';
 import { AngularDualListBoxModule } from 'angular-dual-listbox';
 
@@ -73,6 +74,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatInputModule,
     MatIconModule,
     MatToolbarModule,
+    MatExpansionModule,
     MatButtonModule,
     AngularDualListBoxModule
   ],
