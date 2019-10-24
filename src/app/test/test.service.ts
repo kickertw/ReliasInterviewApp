@@ -50,4 +50,8 @@ export class TestService {
       answer: answer
     });
   }
+
+  finishExam(testId: number) {
+    return this.http.put(AppConfig.apiURL + 'test/' + testId + '/finish', '');
+  }
 }

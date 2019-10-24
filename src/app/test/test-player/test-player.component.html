@@ -8,7 +8,7 @@
       </mat-panel-title>
     </mat-expansion-panel-header>
     <mat-form-field style="width:80%">
-      <textarea
+      <textarea [disabled]="currentTest.finished"
         matInput
         placeholder="Answer"
         [(ngModel)]="testQuestion.answer"
@@ -18,3 +18,14 @@
     </mat-form-field>
   </mat-expansion-panel>
 </mat-accordion>
+
+<div>
+    <button *ngIf="!currentTest.finished"
+      class="mr-3"
+      mat-raised-button
+      color="primary"
+      (click)="finishTest()"
+    >
+      Finish Test
+    </button>
+</div>
