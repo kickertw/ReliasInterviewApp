@@ -16,7 +16,8 @@ export class TestPlayerComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private testService: TestService,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit() {
     this.buildTest();
@@ -31,11 +32,14 @@ export class TestPlayerComponent implements OnInit {
   }
 
   finishTest() {
-      this.testService.finishExam(this.currentTest.testId).subscribe(
-      () => {
-        this.currentTest.finished = true;
-        this.toastr.success('', 'Test Finished!!  Cannot submit anymore answers', { timeOut: 5000 });
-      });
+    this.testService.finishExam(this.currentTest.testId).subscribe(() => {
+      this.currentTest.finished = true;
+      this.toastr.success(
+        '',
+        'Test Finished!!  Cannot submit anymore answers',
+        { timeOut: 5000 }
+      );
+    });
   }
 
   saveResponse(id: number, answer: string): void {
