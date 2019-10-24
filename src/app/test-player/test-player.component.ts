@@ -8,6 +8,7 @@ import { MatSort, MatTableDataSource } from '@angular/material';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CandidateTestQuestion } from '../test/shared/models/candidate-test-question.model';
 import { CandidateTest } from '../test/shared/models/candidate-test.model';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -23,9 +24,8 @@ export class TestPlayerComponent implements OnInit {
   // testId: number;
 
   constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    private testService: TestService) { }
+    private testService: TestService,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
     this.buildTest();
@@ -50,17 +50,23 @@ export class TestPlayerComponent implements OnInit {
   //       this.testPlayerService.getResponses(testId);
   //     }
 
-  // saveResponse() {
-  //       if(this.response.answer === null){
-  //     this.testPlayerService.createResponse(this.response).subscribe(
-  //       response => console.log(response),
-  //       error => console.log(error)
-  //     );
-  //   } else {
-  //     this.testPlayerService.updateResponse(this.response).subscribe(
-  //       response => console.log(response),
-  //       error => console.log(error)
-  //     );
-  //   }
-  // }
+  saveResponse() {
+    this.currentTest.testQuestions.forEach(i => {
+      this.testService.updateTestQuestionAnswer(i.testQuestionsId, i.answer).subscribe(
+        () => { this.toastr.success('Test responses were successfully saved!', 'Success!'); },
+        () => { this.toastr.error('An unexpected error has occurred', 'Beep Boop!'); }
+      );
+    });
+    // if(this.response.answer === null){
+    //   this.testPlayerService.createResponse(this.response).subscribe(
+    //     response => console.log(response),
+    //     error => console.log(error)
+    //   );
+    // } else {
+    //   this.testPlayerService.updateResponse(this.response).subscribe(
+    //     response => console.log(response),
+    //     error => console.log(error)
+    //   );
+    // }
+  }
 }

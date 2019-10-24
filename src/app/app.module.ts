@@ -32,6 +32,7 @@ import {
   MatExpansionModule
 } from '@angular/material';
 import { AngularDualListBoxModule } from 'angular-dual-listbox';
+import { ToastrModule } from 'ngx-toastr';
 
 import { QuestionListComponent } from './questions/list/question-list.component';
 import { QuestionDetailComponent } from './questions/detail/question-detail.component';
@@ -81,7 +82,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,
-    AngularDualListBoxModule
+    AngularDualListBoxModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

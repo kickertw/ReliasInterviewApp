@@ -1,6 +1,6 @@
-<h2>{{currentTest.name}}</h2>
+<h2>{{currentTest?.name}}</h2>
 
-<mat-accordion multi="true">
+<mat-accordion multi="true" *ngIf="currentTest">
   <mat-expansion-panel *ngFor="let testQuestion of currentTest.testQuestions">
     <mat-expansion-panel-header>
       <mat-panel-title>
@@ -12,6 +12,7 @@
     </mat-form-field>
   </mat-expansion-panel>
 </mat-accordion>
+<button id="saveButton" (click)="saveResponse()">Save Test</button>
 <!-- <table mat-table [dataSource]="testQuestions" matSort class="mat-elevation-z8">
     <ng-container matColumnDef="Id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
