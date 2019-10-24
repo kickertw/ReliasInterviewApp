@@ -32,5 +32,14 @@
     >
       Finish Test
     </button>
+    <button
+      *ngIf="currentTest.finished"
+      class="mt-3 mr-3"
+      mat-raised-button
+      color="primary"
+      disabled="true"
+    >
+      Completed!
+    </button>
   </div>
 </div>
