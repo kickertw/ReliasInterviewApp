@@ -7,6 +7,7 @@ import { Response } from './shared/models/response.model';
 import { MatSort, MatTableDataSource } from '@angular/material';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CandidateTestQuestion } from '../test/shared/models/candidate-test-question.model';
+import { CandidateTest } from '../test/shared/models/candidate-test.model';
 
 
 @Component({
@@ -15,19 +16,15 @@ import { CandidateTestQuestion } from '../test/shared/models/candidate-test-ques
   styleUrls: ['./test-player.component.scss']
 })
 export class TestPlayerComponent implements OnInit {
-  displayedColumns: string[] = ['Id', 'Question', 'Type', 'Level'];
+  // displayedColumns: string[] = ['Id', 'Question', 'Type', 'Level'];
   dataSource: MatTableDataSource<Question>;
-  questions: Array<Question>;
-  responses: Array<Response>;
-  testQuestions: Array<CandidateTestQuestion>;
-  response: Response;
-  testId: number;
+  currentTest: CandidateTest;
+  // testQuestions: Array<CandidateTestQuestion>;
+  // testId: number;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private testPlayerService: TestPlayerService,
-    private questionService: QuestionService,
     private testService: TestService) { }
 
   ngOnInit() {
@@ -36,33 +33,34 @@ export class TestPlayerComponent implements OnInit {
 
   buildTest(): void {
     // get list of questions
-      this.testService.getTest(1).subscribe(response => {
-      this.testQuestions = response.testQuestions;
-      });
-      // get list of already saved responses
-    }
-
-  getResponse(id: number): void {
-        this.testPlayerService.getResponse().subscribe(response => {
-          this.response = response.filter(obj => obj.responseId === id)[0];
-        });
-      }
-
-  getResponses(testId: number): void {
-        this.testPlayerService.getResponses(testId);
-      }
-
-  saveResponse() {
-        if(this.response.answer === null){
-      this.testPlayerService.createResponse(this.response).subscribe(
-        response => console.log(response),
-        error => console.log(error)
-      );
-    } else {
-      this.testPlayerService.updateResponse(this.response).subscribe(
-        response => console.log(response),
-        error => console.log(error)
-      );
-    }
+    // Normally you get the testID from the URL parameter by doing "+this.route.snapshot.paramMap.get('id');"
+    // We're just hardcoding for 1 right now
+    this.testService.getTest(1).subscribe((data: CandidateTest) => {
+      this.currentTest = data;
+    });
   }
+
+  // getResponse(id: number): void {
+  //       this.testPlayerService.getResponse().subscribe(response => {
+  //         this.response = response.filter(obj => obj.responseId === id)[0];
+  //       });
+  //     }
+
+  // getResponses(testId: number): void {
+  //       this.testPlayerService.getResponses(testId);
+  //     }
+
+  // saveResponse() {
+  //       if(this.response.answer === null){
+  //     this.testPlayerService.createResponse(this.response).subscribe(
+  //       response => console.log(response),
+  //       error => console.log(error)
+  //     );
+  //   } else {
+  //     this.testPlayerService.updateResponse(this.response).subscribe(
+  //       response => console.log(response),
+  //       error => console.log(error)
+  //     );
+  //   }
+  // }
 }

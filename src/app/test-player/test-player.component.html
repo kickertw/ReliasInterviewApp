@@ -1,6 +1,18 @@
-<h1>Test Player!!</h1>
+<h2>{{currentTest.name}}</h2>
 
-<table mat-table [dataSource]="testQuestions" matSort class="mat-elevation-z8">
+<mat-accordion multi="true">
+  <mat-expansion-panel *ngFor="let testQuestion of currentTest.testQuestions">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{testQuestion.question.text}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-form-field>
+      <textarea matInput placeholder="Answer" [(ngModel)]="testQuestion.answer" rows="4" ></textarea>
+    </mat-form-field>
+  </mat-expansion-panel>
+</mat-accordion>
+<!-- <table mat-table [dataSource]="testQuestions" matSort class="mat-elevation-z8">
     <ng-container matColumnDef="Id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
       <td mat-cell *matCellDef="let element"> {{element.questionId}} </td>
@@ -34,4 +46,4 @@
     <input name="answer" matInput placeholder="Answer" [(ngModel)]="response.answer" />
 </mat-form-field>
   
-<button mat-raised-button color="primary" (click)="saveResponse()">Save</button>
+<button mat-raised-button color="primary" (click)="saveResponse()">Save</button> -->

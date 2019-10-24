@@ -17,22 +17,13 @@ export class TestPlayerService {
 
   constructor(private http: HttpClient) { }
 
-  getResponse(): Observable<any> {
-    return this.http.get(AppConfig.apiURL + 'response');
-  }
-
-  getResponses(testId: number): Observable<any> {
-    return this.http.get(AppConfig.apiURL + 'responses' + testId);
-  }
-
-  createResponse(response: Response): Observable<any> {
-    return this.http.post(AppConfig.apiURL + 'response', response);
-  }
-
-  updateResponse(response: Response): Observable<any> {
+  updateTestQuestionResponse(testQuestionId: number, answer: string): Observable<any> {
     return this.http.put(
-      AppConfig.apiURL + 'response',
-      response,
+      AppConfig.apiURL + 'test/answer',
+      {
+        testQuestionId: testQuestionId,
+        answer: answer
+      },
       this.httpOptions);
   }
 }
