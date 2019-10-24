@@ -1,65 +1,72 @@
-<a [routerLink]="['']" routerLinkActive="router-link-active"
-  ><i class="material-icons"> keyboard_backspace </i
-  ><span> Back to Dashboard</span></a
->
+<div class="container">
+  <a [routerLink]="['']" routerLinkActive="router-link-active"
+    ><i class="material-icons"> keyboard_backspace </i
+    ><span> Back to Dashboard</span></a
+  >
 
-<h2>Question Detail</h2>
+  <h4>Question Detail</h4>
 
-<form *ngIf="question" class="example-form">
-  <input
-    type="hidden"
-    [(ngModel)]="question.questionId"
-    id="questionId"
-    name="questionId"
-  />
-
-  <mat-form-field class="example-full-width">
+  <form *ngIf="question" class="example-form">
     <input
-      matInput
-      placeholder="Question"
-      [(ngModel)]="question.text"
-      name="text"
+      type="hidden"
+      [(ngModel)]="question.questionId"
+      id="questionId"
+      name="questionId"
     />
-  </mat-form-field>
 
-  <mat-form-field class="example-full-width">
-    <textarea
-      name="description"
-      matInput
-      placeholder="Description"
-      [(ngModel)]="question.description"
-    ></textarea>
-  </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input
+        matInput
+        placeholder="Question"
+        [(ngModel)]="question.text"
+        name="text"
+      />
+    </mat-form-field>
 
-  <mat-form-field class="example-full-width">
-    <input
-      name="type"
-      matInput
-      placeholder="Type"
-      [(ngModel)]="question.type"
-    />
-  </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <textarea
+        name="description"
+        matInput
+        placeholder="Description"
+        [(ngModel)]="question.description"
+      ></textarea>
+    </mat-form-field>
 
-  <mat-form-field class="example-full-width">
-    <input
-      name="level"
-      matInput
-      placeholder="Level"
-      [(ngModel)]="question.level"
-    />
-  </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input
+        name="type"
+        matInput
+        placeholder="Type"
+        [(ngModel)]="question.type"
+      />
+    </mat-form-field>
 
-  <mat-form-field class="example-full-width">
-    <input
-      name="answer"
-      matInput
-      placeholder="Answer"
-      [(ngModel)]="question.answer"
-    />
-  </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input
+        name="level"
+        matInput
+        placeholder="Level"
+        [(ngModel)]="question.level"
+      />
+    </mat-form-field>
 
-  <button mat-raised-button color="primary" (click)="saveQuestion()">
-    Save
-  </button>
-  <a mat-raised-button routerLink="/question/list">Cancel</a>
-</form>
+    <mat-form-field class="example-full-width">
+      <input
+        name="answer"
+        matInput
+        placeholder="Answer"
+        [(ngModel)]="question.answer"
+      />
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="saveQuestion()"
+      class="mr-3"
+    >
+      Save
+    </button>
+    <a mat-raised-button routerLink="/question/list">Cancel</a>
+  </form>
+</div>

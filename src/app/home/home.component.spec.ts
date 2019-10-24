@@ -24,9 +24,9 @@ describe('HomeComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render title in a h1 tag', async(() => {
+  it('should render title in a h4 tag', async(() => {
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain(
+    expect(compiled.querySelector('h4').textContent).toContain(
       'PAGES.HOME.TITLE'
     );
   }));
