@@ -10,20 +10,20 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./question-detail.component.scss']
 })
 export class QuestionDetailComponent implements OnInit {
-
   question: Question;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private questionService: QuestionService,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit() {
     const questionId = +this.route.snapshot.paramMap.get('id');
 
     if (questionId === 0) {
-      this.question = <Question> {
+      this.question = <Question>{
         questionId: 0,
         text: '',
         type: 0,
@@ -44,11 +44,11 @@ export class QuestionDetailComponent implements OnInit {
   }
 
   saveQuestion() {
-    if (this.question.questionId === 0){
+    if (this.question.questionId === 0) {
       this.questionService.createQuestion(this.question).subscribe(
         () => {
           this.toastr.success('', 'Updated!');
-          this.router.navigate(['/question/list']);
+          this.router.navigate(['']);
         },
         () => {
           this.toastr.error('', 'An unexpected error has occurred!');
@@ -58,7 +58,7 @@ export class QuestionDetailComponent implements OnInit {
       this.questionService.updateQuestion(this.question).subscribe(
         () => {
           this.toastr.success('', 'Updated!');
-          this.router.navigate(['/question/list']);
+          this.router.navigate(['']);
         },
         () => {
           this.toastr.error('', 'An unexpected error has occurred!');

@@ -9,20 +9,18 @@ import { MatSort, MatTableDataSource } from '@angular/material';
   styleUrls: ['./question-list.component.scss']
 })
 export class QuestionListComponent implements OnInit {
-  displayedColumns: string[] = ['Id', 'Question', 'Type', 'Level'];
-  dataSource: MatTableDataSource<Question>;
+  displayedColumns: string[] = ['questionId', 'text', 'type', 'level', 'go'];
+  ELEMENT_DATA: Question[];
+  dataSource: MatTableDataSource<any>;
 
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
+  constructor(private questionService: QuestionService) {}
 
-  constructor(private questionService: QuestionService) { }
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   ngOnInit() {
-    this.getQuestions();
-  }
-
-  getQuestions(): void {
     this.questionService.getQuestions().subscribe(response => {
-      this.dataSource = new MatTableDataSource(response);
+      this.ELEMENT_DATA = response;
+      this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
       this.dataSource.sort = this.sort;
     });
   }
