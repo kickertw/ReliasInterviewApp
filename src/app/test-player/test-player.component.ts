@@ -52,7 +52,7 @@ export class TestPlayerComponent implements OnInit {
 
   saveResponse() {
     this.currentTest.testQuestions.forEach(i => {
-      this.testService.updateTestQuestionAnswer(i.testQuestionsId, i.answer).subscribe(
+      this.testService.updateTestQuestionAnswer(i.testQuestionId, i.answer).subscribe(
         () => { this.toastr.success('Test responses were successfully saved!', 'Success!'); },
         () => { this.toastr.error('An unexpected error has occurred', 'Beep Boop!'); }
       );
