@@ -57,6 +57,6 @@ export class CandidateDetailComponent implements OnInit {
   }
 
   goToTest(testId) {
-    this.router.navigate(['/test', testId]);
+    this.router.navigate(['/test-builder', testId]);
   }
 }
