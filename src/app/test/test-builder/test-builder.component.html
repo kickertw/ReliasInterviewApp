@@ -1,3 +1,17 @@
+<a
+  *ngIf="currentTest"
+  [routerLink]="['/candidate/detail/', currentTest.candidateId]"
+  routerLinkActive="router-link-active"
+  ><i class="material-icons"> keyboard_backspace </i
+  ><span> Back to Candidate Detail</span></a
+>
 <h2>Test Builder</h2>
 
-<dual-list [source]="source" [height]="500" [key]="key" [display]="display" [(destination)]="target" (destinationChange)="onDualListChange()"></dual-list>
+<dual-list
+  [source]="source"
+  [height]="500"
+  [key]="key"
+  [display]="display"
+  [(destination)]="target"
+  (destinationChange)="onDualListChange()"
+></dual-list>

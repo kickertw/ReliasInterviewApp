@@ -3,23 +3,23 @@
 
   <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
     <ng-container matColumnDef="Id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-      <td mat-cell *matCellDef="let element"> {{element.questionId}} </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.questionId }}</td>
     </ng-container>
 
     <ng-container matColumnDef="Question">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Question </th>
-      <td mat-cell *matCellDef="let element"> {{element.text}} </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Question</th>
+      <td mat-cell *matCellDef="let element">{{ element.text }}</td>
     </ng-container>
 
     <ng-container matColumnDef="Type">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
-      <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
+      <td mat-cell *matCellDef="let element">{{ element.type }}</td>
     </ng-container>
 
     <ng-container matColumnDef="Level">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Level </th>
-      <td mat-cell *matCellDef="let element"> {{element.level}} </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Level</th>
+      <td mat-cell *matCellDef="let element">{{ element.level }}</td>
     </ng-container>
 
     <ng-container matColumnDef="go">
@@ -34,13 +34,14 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
+
   <div class="d-flex justify-content-end">
-  <a [routerLink]="'/question/detail/0'">
-    <button mat-icon-button color="primary" aria-label="Add Question">
+    <a [routerLink]="'/question/detail/0'">
+      <button mat-icon-button color="primary" aria-label="Add Question">
         <mat-icon>note_add</mat-icon>
-    </button>
+      </button>
     </a>
   </div>
 </div>
