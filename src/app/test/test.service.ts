@@ -18,7 +18,7 @@ export class TestService {
 
   createTest(name: string, candidateId: number): Observable<any> {
     const created = new Date();
-    return this.http.post(AppConfig.apiURL + '/test/', {
+    return this.http.post(AppConfig.apiURL + 'test/', {
       name: name,
       candidateId: candidateId,
       created: created
