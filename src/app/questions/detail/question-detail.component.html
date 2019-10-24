@@ -33,22 +33,33 @@
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-      <input
-        name="type"
-        matInput
-        placeholder="Type"
-        [(ngModel)]="question.type"
-      />
-    </mat-form-field>
-
-    <mat-form-field class="example-full-width">
-      <input
-        name="level"
-        matInput
-        placeholder="Level"
-        [(ngModel)]="question.level"
-      />
-    </mat-form-field>
+        <mat-label>Type</mat-label>
+        <mat-select name="type" [(ngModel)]="question.type">
+            <mat-option [value]="0">Behavioral</mat-option>
+            <mat-option [value]="1">Technical</mat-option>
+        </mat-select>    
+        <!-- <input
+          name="type"
+          matInput
+          placeholder="Type"
+          [(ngModel)]="question.type"
+        /> -->
+      </mat-form-field>
+    
+      <mat-form-field class="example-full-width">
+        <mat-label>Level</mat-label>
+        <mat-select name="level" [(ngModel)]="question.level">
+            <mat-option [value]="0">Junior</mat-option>
+            <mat-option [value]="1">Mid</mat-option>
+            <mat-option [value]="2">Señor</mat-option>
+        </mat-select>
+        <!-- <input
+          name="level"
+          matInput
+          placeholder="Level"
+          [(ngModel)]="question.level"
+        /> -->
+      </mat-form-field>
 
     <mat-form-field class="example-full-width">
       <input
