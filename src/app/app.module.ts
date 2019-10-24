@@ -29,7 +29,9 @@ import {
   MatButtonModule,
   MatIconModule,
   MatExpansionModule,
-  MatDialogModule
+  MatDialogModule,
+  MatOptionModule,
+  MatSelectModule
 } from '@angular/material';
 import { AngularDualListBoxModule } from 'angular-dual-listbox';
 import { ToastrModule } from 'ngx-toastr';
@@ -90,6 +92,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatButtonModule,
     AngularDualListBoxModule,
     MatDialogModule,
+    MatSelectModule,
+    MatOptionModule,
     ToastrModule.forRoot({
       timeOut: 2000,
       positionClass: 'toast-top-center',
