@@ -1,4 +1,4 @@
-import { CandidateTestQuestion } from "./candidate-test-question.model";
+import { CandidateTestQuestion } from './candidate-test-question.model';
 
 export interface CandidateTest {
   name: string;

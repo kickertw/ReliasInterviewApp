@@ -28,14 +28,20 @@ import {
   MatToolbarModule,
   MatButtonModule,
   MatIconModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatDialogModule
 } from '@angular/material';
 import { AngularDualListBoxModule } from 'angular-dual-listbox';
 
 import { QuestionListComponent } from './questions/list/question-list.component';
 import { QuestionDetailComponent } from './questions/detail/question-detail.component';
+import { CandidatesListComponent } from './candidates/list/candidates-list.component';
+import {
+  CandidateDetailComponent,
+  DialogOverviewExampleDialogComponent
+} from './candidates/detail/candidate-detail.component';
 import { TestBuilderComponent } from './test/test-builder/test-builder.component';
-import { TestPlayerComponent } from './test-player/test-player.component';
+import { TestPlayerComponent } from './test/test-player/test-player.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -48,8 +54,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     QuestionListComponent,
     QuestionDetailComponent,
     LoginComponent,
+    CandidatesListComponent,
+    CandidateDetailComponent,
     TestBuilderComponent,
-    TestPlayerComponent
+    TestPlayerComponent,
+    DialogOverviewExampleDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -76,9 +85,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatToolbarModule,
     MatExpansionModule,
     MatButtonModule,
-    AngularDualListBoxModule
+    AngularDualListBoxModule,
+    MatDialogModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogOverviewExampleDialogComponent]
 })
 export class AppModule {}
