@@ -27,14 +27,18 @@ import {
   MatInputModule,
   MatToolbarModule,
   MatButtonModule,
-  MatIconModule
+  MatIconModule,
+  MatDialogModule
 } from '@angular/material';
 import { AngularDualListBoxModule } from 'angular-dual-listbox';
 
 import { QuestionListComponent } from './questions/list/question-list.component';
 import { QuestionDetailComponent } from './questions/detail/question-detail.component';
 import { CandidatesListComponent } from './candidates/list/candidates-list.component';
-import { CandidateDetailComponent } from './candidates/detail/candidate-detail.component';
+import {
+  CandidateDetailComponent,
+  DialogOverviewExampleDialogComponent
+} from './candidates/detail/candidate-detail.component';
 import { TestBuilderComponent } from './test/test-builder/test-builder.component';
 import { TestPlayerComponent } from './test-player/test-player.component';
 
@@ -52,7 +56,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     CandidatesListComponent,
     CandidateDetailComponent,
     TestBuilderComponent,
-    TestPlayerComponent
+    TestPlayerComponent,
+    DialogOverviewExampleDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -78,9 +83,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,
-    AngularDualListBoxModule
+    AngularDualListBoxModule,
+    MatDialogModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogOverviewExampleDialogComponent]
 })
 export class AppModule {}

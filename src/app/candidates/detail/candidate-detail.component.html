@@ -66,10 +66,13 @@
     </tbody>
   </table>
   <div class="d-flex justify-content-end">
-    <a [routerLink]="'/test-builder'">
-      <button mat-icon-button color="primary" aria-label="Add Test">
-        <mat-icon>note_add</mat-icon>
-      </button>
-    </a>
+    <button
+      (click)="openDialog()"
+      mat-icon-button
+      color="primary"
+      aria-label="Add Test"
+    >
+      <mat-icon>note_add</mat-icon>
+    </button>
   </div>
 </div>

@@ -42,7 +42,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'test-builder',
+    path: 'test-builder/:id',
     component: TestBuilderComponent
   },
   {
