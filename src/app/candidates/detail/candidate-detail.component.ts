@@ -4,6 +4,7 @@ import { Candidate } from '../shared/models/candidate.model';
 import { CandidateService } from '../candidate.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { TestService } from '../../test/test.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-candidate-detail',
@@ -20,7 +21,8 @@ export class CandidateDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private candidateService: CandidateService,
     public dialog: MatDialog,
-    private testService: TestService
+    private testService: TestService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit() {
@@ -51,13 +53,23 @@ export class CandidateDetailComponent implements OnInit {
     if (this.candidate.id === 0) {
       this.candidate.created = new Date();
       console.log(this.candidate);
-      this.candidateService.createCandidate(this.candidate).subscribe(() => {
-        this.router.navigate(['/']);
-      });
+      this.candidateService.createCandidate(this.candidate).subscribe(
+        () => {
+          this.toastr.success('', 'Created!', { timeOut: 2000 });
+          this.router.navigate(['/']);
+        },
+        () => {
+          this.toastr.error('', 'An unexpected error has occurred!', { timeOut: 2000 });
+        });
     } else {
-      this.candidateService.updateCandidate(this.candidate).subscribe(() => {
-        this.router.navigate(['/']);
-      });
+      this.candidateService.updateCandidate(this.candidate).subscribe(
+        () => {
+          this.toastr.success('', 'Updated!', { timeOut: 2000 });
+          this.router.navigate(['/']);
+        },
+        () => {
+          this.toastr.error('', 'An unexpected error has occurred!', { timeOut: 2000 });
+        });
     }
   }
 

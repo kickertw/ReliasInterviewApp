@@ -32,6 +32,7 @@ import {
   MatDialogModule
 } from '@angular/material';
 import { AngularDualListBoxModule } from 'angular-dual-listbox';
+import { ToastrModule } from 'ngx-toastr';
 
 import { QuestionListComponent } from './questions/list/question-list.component';
 import { QuestionDetailComponent } from './questions/detail/question-detail.component';
@@ -88,7 +89,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatExpansionModule,
     MatButtonModule,
     AngularDualListBoxModule,
-    MatDialogModule
+    MatDialogModule,
+    ToastrModule.forRoot({
+      timeOut: 2000,
+      positionClass: 'toast-top-center',
+      preventDuplicates: true
+    })
   ],
   providers: [],
   bootstrap: [AppComponent],
