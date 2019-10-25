@@ -89,14 +89,17 @@ export class CandidateDetailComponent implements OnInit {
       data: { name: this.newTestName }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.newTestName = result;
-      this.testService
-        .createTest(this.newTestName, this.candidate.id)
-        .subscribe(res => {
-          this.router.navigate(['test-builder', res.testId]);
-        });
+    dialogRef.afterClosed().subscribe((result: string) => {
+      if (result.length > 0) {
+        this.newTestName = result;
+        this.testService
+          .createTest(this.newTestName, this.candidate.id)
+          .subscribe(res => {
+            this.router.navigate(['test-builder', res.testId]);
+          });
+      } else {
+        this.toastr.error('You must give your test a name', 'Add Test Error');
+      }
     });
   }
 }

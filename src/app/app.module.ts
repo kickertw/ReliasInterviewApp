@@ -97,7 +97,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatOptionModule,
     MatPaginatorModule,
     ToastrModule.forRoot({
-      timeOut: 2000,
+      timeOut: 3000,
       positionClass: 'toast-top-center',
       preventDuplicates: true
     })

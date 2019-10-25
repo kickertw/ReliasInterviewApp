@@ -50,12 +50,13 @@
       </button>
     </div>
   </form>
+  <br><br>
   <div *ngIf="candidateLoaded && candidate.id !== 0">
     <h4>Tests</h4>
     <table class="table table-bordered">
       <thead>
         <tr>
-          <th>Name</th>
+          <th colspan="2">Name</th>
         </tr>
       </thead>
       <tbody>
@@ -70,7 +71,7 @@
             *ngIf="test?.hasQuestions"
             [routerLink]="['/test-player/', test.testId]"
             class="clickable icon-cell"
-            bgcolor="#3f51b5"
+            style="background: #3f51b5;text-align: center;"
           >
             <i class="material-icons">
               keyboard_arrow_right
