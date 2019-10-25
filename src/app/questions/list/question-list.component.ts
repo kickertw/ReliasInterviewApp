@@ -19,10 +19,24 @@ export class QuestionListComponent implements OnInit {
 
   ngOnInit() {
     this.questionService.getQuestions().subscribe((response: Question[]) => {
+      response = this.fixResponse(response);
       this.dataSource = new MatTableDataSource(response);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
     });
+  }
+
+  fixResponse(questions: Question[]): Question[] {
+    questions.forEach(i => {
+      i.typeDisplay = this.getQuestionType(i.type);
+      i.levelDisplay = this.getQuestionLevel(i.level);
+    });
+
+    return questions;
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   getQuestionLevel(level: number) {
