@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Question } from '../shared/models/question.model';
 import { QuestionService } from '../question.service';
-import { MatSort, MatTableDataSource } from '@angular/material';
+import { MatSort, MatTableDataSource, MatPaginator } from '@angular/material';
 
 @Component({
   selector: 'app-question-list',
@@ -9,19 +9,19 @@ import { MatSort, MatTableDataSource } from '@angular/material';
   styleUrls: ['./question-list.component.scss']
 })
 export class QuestionListComponent implements OnInit {
-  displayedColumns: string[] = ['questionId', 'text', 'type', 'level', 'go'];
-  ELEMENT_DATA: Question[];
+  displayedColumns: string[] = ['text', 'type', 'level', 'go'];
   dataSource: MatTableDataSource<any>;
 
   constructor(private questionService: QuestionService) {}
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   ngOnInit() {
-    this.questionService.getQuestions().subscribe(response => {
-      this.ELEMENT_DATA = response;
-      this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
+    this.questionService.getQuestions().subscribe((response: Question[]) => {
+      this.dataSource = new MatTableDataSource(response);
       this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
     });
   }
 
